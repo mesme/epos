@@ -23,24 +23,7 @@ log.info('App starting...');
 // THIS SECTION IS NOT REQUIRED
 //-------------------------------------------------------------------
 let template = []
-if (process.platform === 'darwin') {
-  // OS X
-  const name = app.getName();
-  template.unshift({
-    label: name,
-    submenu: [
-      {
-        label: 'About ' + name,
-        role: 'about'
-      },
-      {
-        label: 'Quit',
-        accelerator: 'Command+Q',
-        click() { app.quit(); }
-      },
-    ]
-  })
-}
+
 
 
 //-------------------------------------------------------------------
@@ -54,10 +37,7 @@ if (process.platform === 'darwin') {
 //-------------------------------------------------------------------
 let win;
 
-function sendStatusToWindow(text) {
-  log.info(text);
-  win.webContents.send('message', text);
-}
+
 function createDefaultWindow() {
   win = new BrowserWindow();
   win.webContents.openDevTools();
